@@ -1,10 +1,14 @@
 import { Field, Form, Formik } from 'formik'
 import { AuthLayout } from '../../components'
 import { signupWithPassword } from '../../service/supabase'
+import { useNavigate } from 'react-router-dom'
 
 export default function Register() {
+  const navigate = useNavigate()
+
   async function handleSubmit(values) {
-    const { message } = signupWithPassword(values)
+    signupWithPassword(values)
+    navigate('/signin')
   }
 
   return (

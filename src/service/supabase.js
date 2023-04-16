@@ -7,8 +7,16 @@ const supabase = createClient(URL_PROJECT, API_PROJECT)
 
 async function signupWithPassword(values) {
   const { email, password, username } = values
-  const { data, error } = await supabase.auth.signUp({ email, password },{ data: { username } })
-  
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: {
+        username: username,
+      },
+    },
+  })
+
   return {
     data,
     error,
@@ -28,4 +36,9 @@ async function loginWithPassword(values) {
   }
 }
 
-export { supabase, signupWithPassword, loginWithPassword }
+async function logout() {
+  const { error } = await supabase.auth.signOut()
+  return { error }
+}
+
+export { supabase, signupWithPassword, loginWithPassword, logout }
