@@ -1,5 +1,9 @@
+import { BaseLayout, TotalExpense } from '../../components'
+
 export default function Home() {
   return (
-    <div>Home</div>
+    <BaseLayout>
+      <TotalExpense />
+    </BaseLayout>
   )
 }
