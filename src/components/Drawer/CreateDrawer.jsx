@@ -13,8 +13,9 @@ const createSchema = Yup.object().shape({
 })
 
 const Create = ({ onClose }) => {
-  async function handleNewSubss(values) {
+  async function handleNewSubss(values, {resetForm}) {
     console.log(values)
+    resetForm()
   }
 
   return (
@@ -26,7 +27,7 @@ const Create = ({ onClose }) => {
         <BsX />
       </button>
       <h1>New Subscription</h1>
-      <div className='mt-4 h-[calc(100vh-148px)] overflow-y-auto px-2 create-form-drawer'>
+      <div className='mt-8 h-[calc(100vh-148px)] overflow-y-auto px-2 create-form-drawer'>
         <Formik
           initialValues={{
             name: '',
