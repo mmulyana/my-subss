@@ -23,7 +23,7 @@ export default function Navbar() {
     >
       <div className='max-w-[600px] flex justify-between items-center mx-auto px-4 lg:px-0'>
         <div>
-          <p className='text-xs text-gray-500'>Good Morning</p>
+          <p className='text-xs text-gray-500'>Welcome</p>
           <p className='text-gray-800'>{user_metadata.username}</p>
         </div>
         <div className='h-9 w-9 rounded-full bg-gray-300'></div>
