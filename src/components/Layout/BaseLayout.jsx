@@ -15,7 +15,7 @@ export default function BaseLayout({ children }) {
   }
 
   return (
-    <div className='max-w-[600px] mx-auto relative'>
+    <div className='max-w-[600px] mx-auto relative px-4 lg:px-0'>
       <Navbar />
       <main className='mt-16'>{children}</main>
       <Tabbar>
