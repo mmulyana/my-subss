@@ -1,14 +1,14 @@
-import { useSelector } from "react-redux"
+import { useSelector } from 'react-redux'
 
 export default function Navbar() {
-  const {user_metadata} = useSelector(s => s.user)
+  const { user_metadata } = useSelector((s) => s.user)
 
   return (
-    <div className='absolute z-50 py-2 w-full top-0 left-0'>
-      <div className='container flex justify-between items-center'>
+    <div className='fixed z-50 py-2 w-full top-0 left-0'>
+      <div className='max-w-[600px] flex justify-between items-center mx-auto'>
         <div>
-          <p>Good Morning</p>
-          <p>{user_metadata.username}</p>
+          <p className='text-xs text-gray-500'>Good Morning</p>
+          <p className='text-gray-800'>{user_metadata.username}</p>
         </div>
         <div className='h-9 w-9 rounded-full bg-gray-300'></div>
       </div>

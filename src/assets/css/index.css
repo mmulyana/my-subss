@@ -3,7 +3,39 @@
 @tailwind utilities;
 
 @layer components {
+  body {
+    @apply bg-gray-100;
+  }
   .textfield {
     @apply form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-violet-300 focus:ring focus:ring-violet-200 focus:ring-opacity-50;
   }
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 56%;
+  height: 100%;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+  z-index: 80;
+  padding: 1rem;
+  box-shadow: -8px 0 12px 0 rgba(0, 0, 0, 0.08);
+}
+
+.drawer.open {
+  right: 0;
+}
+
+.drawer button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.drawer-content {
+  padding: 20px;
 }
