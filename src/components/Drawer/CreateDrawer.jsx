@@ -1,7 +1,10 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import withDrawer from './withDrawer'
-import { BsX } from 'react-icons/bs'
 import * as Yup from 'yup'
+import { useDispatch, useSelector } from 'react-redux'
+import { supabase } from '../../service/supabase'
+import { importSubscription } from '../../redux/feature/subscription'
+import { BsX } from 'react-icons/bs'
 
 const createSchema = Yup.object().shape({
   name: Yup.string().required('Name is required'),
@@ -9,13 +12,34 @@ const createSchema = Yup.object().shape({
   label: Yup.string().required('label is required'),
   price: Yup.number().required('price is required'),
   date: Yup.number().required('date is required'),
-  payment_method: Yup.string().required('payment method is required')
+  payment_method: Yup.string().required('payment method is required'),
 })
 
 const Create = ({ onClose }) => {
-  async function handleNewSubss(values, {resetForm}) {
-    console.log(values)
-    resetForm()
+  const { id } = useSelector((s) => s.user)
+  const dispatch = useDispatch()
+
+  async function handleNewSubss(values, { resetForm }) {
+    const { name, description, label, price, date, payment_method } = values
+    const { error } = await supabase.from('subscription').insert({
+      name,
+      description: description || null,
+      label,
+      price,
+      payment_date: date,
+      payment_method,
+      iduser: id,
+    })
+
+    if (!error) {
+      const { data } = await supabase
+      .from('subscription')
+      .select()
+      .eq('iduser', id)
+
+      dispatch(importSubscription(data))
+      resetForm()
+    }
   }
 
   return (
@@ -43,18 +67,30 @@ const Create = ({ onClose }) => {
           <Form className='flex flex-col gap-2'>
             <label className='text-slate-800 text-sm mt-3'>Name</label>
             <Field name='name' type='text' className='textfield' />
-            <ErrorMessage name='name' component='span' className='text-red-500 text-xs' />
+            <ErrorMessage
+              name='name'
+              component='span'
+              className='text-red-500 text-xs'
+            />
 
             <label className='text-slate-800 text-sm mt-3'>Description</label>
             <Field name='description' type='text' className='textfield' />
 
             <label className='text-slate-800 text-sm mt-3'>Label</label>
             <Field name='label' type='text' className='textfield' />
-            <ErrorMessage name='label' component='span' className='text-red-500 text-xs' />
+            <ErrorMessage
+              name='label'
+              component='span'
+              className='text-red-500 text-xs'
+            />
 
             <label className='text-slate-800 text-sm mt-3'>Price</label>
             <Field name='price' type='number' className='textfield' />
-            <ErrorMessage name='price' component='span' className='text-red-500 text-xs' />
+            <ErrorMessage
+              name='price'
+              component='span'
+              className='text-red-500 text-xs'
+            />
 
             <label className='text-slate-800 text-sm mt-3'>Payment date</label>
             <Field
@@ -63,7 +99,11 @@ const Create = ({ onClose }) => {
               placeholder='1'
               className='textfield'
             />
-            <ErrorMessage name='date' component='span' className='text-red-500 text-xs' />
+            <ErrorMessage
+              name='date'
+              component='span'
+              className='text-red-500 text-xs'
+            />
 
             <label className='text-slate-800 text-sm mt-3'>
               Payment Method
@@ -74,7 +114,11 @@ const Create = ({ onClose }) => {
               placeholder='Credit card'
               className='textfield'
             />
-            <ErrorMessage name='payment_method' component='span' className='text-red-500 text-xs' />
+            <ErrorMessage
+              name='payment_method'
+              component='span'
+              className='text-red-500 text-xs'
+            />
 
             <div className='absolute bottom-0 left-0 h-16 flex items-center justify-center w-full bg-white z-20'>
               <button
