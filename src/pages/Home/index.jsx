@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <BaseLayout>
       <TotalExpense />
-      <div className='mt-12 flex justify-center'>
+      <div className='mt-3 flex justify-center'>
         <button className='rounded-full bg-violet-600 hover:bg-violet-800 text-white px-6 py-2 text-sm' onClick={handleOpenDrawer}>New Subss</button>
       </div>
       <CreateWithDrawer

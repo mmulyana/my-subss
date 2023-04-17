@@ -9,6 +9,9 @@
   .textfield {
     @apply form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-violet-300 focus:ring focus:ring-violet-200 focus:ring-opacity-50;
   }
+  .checkbox {
+    @apply form-checkbox block rounded border-gray-300 shadow-sm focus:border-violet-300 focus:ring focus:ring-violet-200 focus:ring-opacity-50;
+  }
 }
 
 .drawer {
@@ -26,14 +29,6 @@
 
 .drawer.open {
   right: 0;
-}
-
-.drawer button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 24px;
-  cursor: pointer;
 }
 
 .drawer-content {

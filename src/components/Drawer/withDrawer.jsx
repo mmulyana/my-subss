@@ -21,7 +21,7 @@ const withDrawer = (WrappedComponent) => {
     return (
       <>
         {openButton}
-        <div className={`drawer ${isOpen ? 'open' : ''}`} ref={drawerRef}>
+        <div className={`relative drawer ${isOpen ? 'open' : ''}`} ref={drawerRef}>
           <WrappedComponent onClose={onClose} />
         </div>
       </>
