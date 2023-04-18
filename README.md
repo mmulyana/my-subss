@@ -4,7 +4,6 @@ subscription manager built with react and supabase
 ## Features
 
 - Manage subscriptions: Add, and delete
-- Authentication by email and password
 
 ## Dependencies
 
