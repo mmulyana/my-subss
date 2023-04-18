@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { BsX } from 'react-icons/bs'
 import { supabase } from '../../service/supabase'
 import { importSubscription } from '../../redux/feature/subscription'
+import { changeFormat } from '../../utils'
 
 function Detail({ onClose }) {
   const { data } = useSelector((s) => s.detail)
@@ -44,23 +45,26 @@ function Detail({ onClose }) {
           <BsX />
         </button>
       </div>
-      <div className='w-full py-2 mt-6'>
+      <div className='w-full py-2 mt-12'>
         <p className='text-2xl text-slate-800'>
-          {data.name} {data.id}
+          {data.name}
         </p>
-        <p className='text-slate-500 mt-2 font-light'>{data.description}</p>
-        <p className='border border-gray-500 px-4 text-xs rounded-full h-6 inline-flex items-center capitalize mt-4'>
+        <p className='text-slate-500 mt-2 font-light'>{data.description || 'description'}</p>
+        <p className='border border-gray-500 px-4 text-xs rounded-full h-[25px] pb-[2px] inline-flex items-center capitalize mt-4'>
           {data.label}
         </p>
       </div>
-      <div className='mt-4'>
-        <p className='text-2xl'>Rp. {data.price}</p>
-        <p className='text-xs mt-3 text-slate-500'>
-          Setiap tanggal{' '}
-          <span className='font-semibold text-slate-800'>
-            {data.payment_date}
-          </span>
+      <div className='mt-8'>
+        <p className='text-xs mt-6 text-slate-400'>
+          Jumlah bayar
         </p>
+        <p className='text-2xl'>{changeFormat(data.price).slice(0, -3)}</p>
+        
+        <p className='mt-6 text-xs text-slate-400'>
+          Setiap tanggal
+        </p>
+        <p className='text-2xl font-semibold text-slate-800'>{data.payment_date}</p>
+        
         <p className='text-xs mt-5 text-slate-400'>Metode Pembayaran</p>
         <p className='text-lg font-semibold text-slate-800'>
           {data.payment_method}

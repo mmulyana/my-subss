@@ -45,13 +45,15 @@ const Create = ({ onClose }) => {
 
   return (
     <div>
-      <button
-        onClick={onClose}
-        className='absolute top-4 right-4 w-9 h-9 flex items-center justify-center rounded-full bg-gray-200 text-gray-600 hover:text-red-600'
-      >
-        <BsX />
-      </button>
-      <h1>New Subscription</h1>
+      <div className='flex justify-between items-center absolute top-0 left-0 w-full bg-slate-100 p-2 border-b border-gray-200/90'>
+        <h1 className='text-sm text-gray-600'>New Subscription</h1>
+        <button
+          onClick={onClose}
+          className='w-6 h-6 flex items-center justify-center rounded-full text-gray-600 hover:text-red-600'
+        >
+          <BsX />
+        </button>
+      </div>
       <div className='mt-8 h-[calc(100vh-148px)] overflow-y-auto px-2 create-form-drawer'>
         <Formik
           initialValues={{

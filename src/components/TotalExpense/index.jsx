@@ -28,15 +28,18 @@ export default function TotalExpense() {
   }
 
   if (isLoading) {
-    return <Skeleton style={{ height: '10rem' }} />
+    return <Skeleton style={{ height: '6rem' }} />
   }
 
   return (
-    <div className='h-40 w-full bg-violet-700 rounded-lg flex flex-col gap-2 items-center justify-center'>
-      <p className='text-3xl text-white font-semibold'>
+    <div className='h-24 w-full bg-gray-300 rounded-lg flex gap-2 items-center justify-between px-4 lg:px-6'>
+      <div>
+        <p className='text-gray-800 font-semibold'>Total Expenses</p>
+        <p className='text-gray-600 text-sm'>Per month</p>
+      </div>
+      <p className='text-lg text-gray-800 font-semibold'>
         {changeFormat(total).slice(0, -3)}
       </p>
-      <p className='text-white/60 text-sm'>Monthly Expense</p>
     </div>
   )
 }
