@@ -65,6 +65,11 @@ export default function Login() {
         <button onClick={handleSignup} className='py-4 mt-4 w-full rounded-md bg-slate-700 hover:bg-slate-800 text-white text-sm hover:ring hover:ring-violet-200 hover:ring-opacity-80'>
           Create a new account
         </button>
+        <div className='mt-4 py-3 rounded border border-amber-600 bg-amber-100 w-full px-4 text-sm'>
+          <p className='text-amber-800/80 mb-2'>Guest account</p>
+          <p className='text-amber-800/50'>email <span className='text-amber-800'>guest@mail.com</span></p>
+          <p className='text-amber-800/50'>password <span className='text-amber-800'>12345678</span></p>
+        </div>
       </div>
     </AuthLayout>
   )
