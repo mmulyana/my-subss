@@ -1,4 +1,7 @@
 import React from 'react'
+import { calculateDaysBetween, changeFormat, getDayToday } from '../../utils'
+
+let currDay = getDayToday()
 
 export default function ProductItem({ data, openDetailData }) {
   return (
@@ -11,8 +14,12 @@ export default function ProductItem({ data, openDetailData }) {
         <p className='text-xs text-gray-400 capitalize mt-1'>{data.label}</p>
       </div>
       <div className='flex flex-col items-end'>
-        <p className='font-medium text-gray-800'>Rp {data.price}</p>
-        <p className='text-xs text-gray-400 mt-1'>{data.payment_date}</p>
+        <p className='font-medium text-gray-800'>
+          {changeFormat(data.price).slice(0, -3)}
+        </p>
+        <p className='text-xs text-gray-400 mt-1'>
+          sisa {calculateDaysBetween(currDay, data.payment_date) - 1} hari
+        </p>
       </div>
     </div>
   )

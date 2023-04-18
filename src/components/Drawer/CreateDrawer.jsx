@@ -39,6 +39,7 @@ const Create = ({ onClose }) => {
 
       dispatch(importSubscription(data))
       resetForm()
+      onClose()
     }
   }
 

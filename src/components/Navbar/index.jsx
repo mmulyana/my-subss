@@ -1,8 +1,9 @@
+import Avvvatars from 'avvvatars-react'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 export default function Navbar() {
-  const { user_metadata } = useSelector((s) => s.user)
+  const { user_metadata, email } = useSelector((s) => s.user)
 
   const [offset, setOffset] = useState(0)
 
@@ -26,7 +27,7 @@ export default function Navbar() {
           <p className='text-xs text-gray-500'>Welcome</p>
           <p className='text-gray-800'>{user_metadata.username}</p>
         </div>
-        <div className='h-9 w-9 rounded-full bg-gray-300'></div>
+        <Avvvatars value={email} />
       </div>
     </div>
   )
