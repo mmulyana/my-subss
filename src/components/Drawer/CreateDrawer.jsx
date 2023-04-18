@@ -33,9 +33,9 @@ const Create = ({ onClose }) => {
 
     if (!error) {
       const { data } = await supabase
-      .from('subscription')
-      .select()
-      .eq('iduser', id)
+        .from('subscription')
+        .select()
+        .eq('iduser', id)
 
       dispatch(importSubscription(data))
       resetForm()
@@ -69,7 +69,12 @@ const Create = ({ onClose }) => {
         >
           <Form className='flex flex-col gap-2'>
             <label className='text-slate-800 text-sm mt-3'>Name</label>
-            <Field name='name' type='text' className='textfield' />
+            <Field
+              name='name'
+              type='text'
+              placeholder='e.g. youtube premium'
+              className='textfield rounded border border-slate-300'
+            />
             <ErrorMessage
               name='name'
               component='span'
@@ -77,10 +82,20 @@ const Create = ({ onClose }) => {
             />
 
             <label className='text-slate-800 text-sm mt-3'>Description</label>
-            <Field name='description' type='text' className='textfield' />
+            <Field
+              name='description'
+              type='text'
+              placeholder='e.g. Premium plan'
+              className='textfield rounded border border-slate-300'
+            />
 
             <label className='text-slate-800 text-sm mt-3'>Label</label>
-            <Field name='label' type='text' className='textfield' />
+            <Field
+              name='label'
+              type='text'
+              placeholder='e.g. Entertaiment'
+              className='textfield rounded border border-slate-300'
+            />
             <ErrorMessage
               name='label'
               component='span'
@@ -88,7 +103,12 @@ const Create = ({ onClose }) => {
             />
 
             <label className='text-slate-800 text-sm mt-3'>Price</label>
-            <Field name='price' type='number' className='textfield' />
+            <Field
+              name='price'
+              type='number'
+              placeholder='99000'
+              className='textfield rounded border border-slate-300'
+            />
             <ErrorMessage
               name='price'
               component='span'
@@ -100,7 +120,7 @@ const Create = ({ onClose }) => {
               name='date'
               type='number'
               placeholder='1'
-              className='textfield'
+              className='textfield rounded border border-slate-300'
             />
             <ErrorMessage
               name='date'
@@ -114,8 +134,8 @@ const Create = ({ onClose }) => {
             <Field
               name='payment_method'
               type='text'
-              placeholder='Credit card'
-              className='textfield'
+              placeholder='e.g. Credit card'
+              className='textfield rounded border border-slate-300'
             />
             <ErrorMessage
               name='payment_method'

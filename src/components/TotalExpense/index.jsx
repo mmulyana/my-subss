@@ -32,7 +32,7 @@ export default function TotalExpense() {
   }
 
   return (
-    <div className='h-24 w-full bg-gray-300 rounded-lg flex gap-2 items-center justify-between px-4 lg:px-6'>
+    <div className='h-24 w-full bg-amber-100 rounded-lg flex gap-2 items-center justify-between px-4 lg:px-6'>
       <div>
         <p className='text-gray-800 font-semibold'>Total Expenses</p>
         <p className='text-gray-600 text-sm'>Per month</p>

@@ -4,6 +4,8 @@ import { loginWithPassword } from '../../service/supabase'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { addUser } from '../../redux/feature/user'
+import { BsFillPersonFill } from 'react-icons/bs'
+import { IoMdLock } from 'react-icons/io'
 
 export default function Login() {
   const navigate = useNavigate()
@@ -15,27 +17,55 @@ export default function Login() {
     navigate('/')
   }
 
+  function handleSignup() {
+    navigate('/signup')
+  }
+
   return (
     <AuthLayout>
-      <Formik
-        initialValues={{ email: '', password: '' }}
-        onSubmit={handleSubmit}
-      >
-        <Form className='flex flex-col gap-2 mt-20'>
-          <label className='text-slate-800 text-sm mt-3'>Email</label>
-          <Field name='email' type='text' className='textfield' />
-          
-          <label className='text-slate-800 text-sm mt-3'>Password</label>
-          <Field name='password' type='text' className='textfield' />
-          
-          <button
-            type='submit'
-            className='py-4 mt-8 rounded bg-violet-700 hover:bg-violet-800 text-white text-sm hover:ring hover:ring-violet-200 hover:ring-opacity-80'
-          >
-            Sign In
-          </button>
-        </Form>
-      </Formik>
+      <div className='h-screen w-full flex flex-col items-center justify-center'>
+        <h1 className='text-slate-500 text-xl font-normal w-full text-left'>Hi there!</h1>
+        <p className='text-slate-600 text-2xl font-semibold w-full text-left'>Welcome back</p>
+        <Formik
+          initialValues={{ email: '', password: '' }}
+          onSubmit={handleSubmit}
+        >
+          <Form className='flex w-full flex-col mt-20'>
+            <div className='relative flex bg-white h-12 rounded-t-md'>
+              <div className='h-12 w-16 text-lg text-gray-400 flex items-center justify-center'>
+                <BsFillPersonFill />
+              </div>
+              <Field
+                name='email'
+                type='text'
+                className='textfield h-12 rounded-tr-md border-none'
+                placeholder='Email'
+              />
+            </div>
+            <div className='relative flex bg-white h-12 rounded-bl-md'>
+              <div className='h-12 w-16 text-lg text-gray-400 flex items-center justify-center'>
+                <IoMdLock />
+              </div>
+              <Field
+                name='password'
+                type='text'
+                className='textfield h-12 rounded-br-md border-none'
+                placeholder='Password'
+              />
+            </div>
+
+            <button
+              type='submit'
+              className='py-4 mt-8 rounded-md bg-violet-700 hover:bg-violet-800 text-white text-sm hover:ring hover:ring-violet-200 hover:ring-opacity-80'
+            >
+              Sign In
+            </button>
+          </Form>
+        </Formik>
+        <button onClick={handleSignup} className='py-4 mt-4 w-full rounded-md bg-slate-700 hover:bg-slate-800 text-white text-sm hover:ring hover:ring-violet-200 hover:ring-opacity-80'>
+          Create a new account
+        </button>
+      </div>
     </AuthLayout>
   )
 }

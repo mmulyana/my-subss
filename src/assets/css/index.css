@@ -4,10 +4,10 @@
 
 @layer components {
   body {
-    @apply bg-gray-100;
+    @apply bg-[#fafafa];
   }
   .textfield {
-    @apply form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-violet-300 focus:ring focus:ring-violet-200 focus:ring-opacity-50;
+    @apply form-input block w-full focus:z-20;
   }
   .checkbox-group {
     @apply flex gap-2 items-center;
@@ -23,7 +23,7 @@
   right: -100%;
   width: 40%;
   height: 100%;
-  background-color: white;
+  background-color: #fff;
   transition: all 0.3s ease-in-out;
   z-index: 80;
   padding: 1rem;
