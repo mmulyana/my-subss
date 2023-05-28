@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react'
 import { supabase } from '../../service/supabase'
 import { importSubscription } from '../../redux/feature/subscription'
 import { addDetail } from '../../redux/feature/detail'
+import { delDetail } from '../../redux/feature/detail'
 
 export default function Home() {
   const { id } = useSelector((s) => s.user)
@@ -47,6 +48,7 @@ export default function Home() {
 
   function closeDetail() {
     setIsOpenDetail(false)
+    dispatch(delDetail())
   }
 
   return (

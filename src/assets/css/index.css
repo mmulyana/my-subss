@@ -52,9 +52,8 @@
   border-radius: 5px;
 }
 
-@media (max-width: 479px) {
+@media (max-width: 600px) {
   .drawer {
     width: 100%;
   }
-
 }
