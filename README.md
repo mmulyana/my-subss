@@ -2,7 +2,7 @@
 
 ### About
 
-Subscription manager built with react, tailwind, and Prisma ORM
+Subscription manager built with react, tailwind, and Supabase
 
 ### TODO
 
